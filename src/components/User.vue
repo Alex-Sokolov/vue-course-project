@@ -7,7 +7,7 @@
   <div v-else class="panel panel-default">
     <div class="panel-heading">
       <i :class="['fa', 'fa-fw', 'fa-lg', user.sex === 'M' ? 'fa-male' : 'fa-female']"></i>
-      {{ user.name }}
+      {{ title }}
     </div>
     <div class="panel-body">
 
@@ -39,16 +39,16 @@
       </div>
 
       <!--<div class="form-group">
-                              <label>Пол</label>
-                              <p class="form-control-static">
-                                <label class="radio-inline">
-                                  <input type="radio" v-model="user.sex" value="M"> Мужской
-                                </label>
-                                <label class="radio-inline">
-                                  <input type="radio" v-model="user.sex" value="F"> Женский
-                                </label>
-                              </p>
-                            </div>-->
+                                    <label>Пол</label>
+                                    <p class="form-control-static">
+                                      <label class="radio-inline">
+                                        <input type="radio" v-model="user.sex" value="M"> Мужской
+                                      </label>
+                                      <label class="radio-inline">
+                                        <input type="radio" v-model="user.sex" value="F"> Женский
+                                      </label>
+                                    </p>
+                                  </div>-->
 
       <div class="form-group">
         <label>Дата регистрации</label>
@@ -61,16 +61,16 @@
       </div>
 
       <!--<div class="form-group">
-                                  <label>Роли пользователя</label>
-                                  <span v-if="!userHaveRoles" class="label label-warning">
-                                    У пользователя не выбрано ни одной роли
-                                  </span>
-                                  <div class="checkbox" v-for="item in rolesList">
-                                    <label>
-                                      <input type="checkbox" :value="item" v-model="user.roles" /> {{ item }}
-                                    </label>
-                                  </div>
-                                </div>-->
+                                        <label>Роли пользователя</label>
+                                        <span v-if="!userHaveRoles" class="label label-warning">
+                                          У пользователя не выбрано ни одной роли
+                                        </span>
+                                        <div class="checkbox" v-for="item in rolesList">
+                                          <label>
+                                            <input type="checkbox" :value="item" v-model="user.roles" /> {{ item }}
+                                          </label>
+                                        </div>
+                                      </div>-->
 
       <hr>
 
@@ -93,6 +93,14 @@ export default {
     rolesList: ['admin', 'user', 'superuser'],
   }),
   computed: {
+    title() {
+      return [
+        this.user.firstName,
+        this.user.lastName,
+        this.user.phone,
+      ].join(' ');
+    },
+
     userHaveRoles() {
       return this.user.roles.length > 0;
     },
