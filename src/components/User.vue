@@ -77,7 +77,7 @@ export default {
         birthday: '12.02.1999',
         roles: [],
         sex: 'M',
-        bio: '',
+        bio: 'Биография пользователя',
       };
     },
   },
