@@ -5,7 +5,8 @@
   </div>
   <div v-else class="panel panel-default">
     <div class="panel-heading">
-      Пользователь {{ user.name }}
+      <i :class="['fa', 'fa-fw', 'fa-lg', user.sex === 'M' ? 'fa-male' : 'fa-female']"></i>
+      {{ user.name }}
     </div>
     <div class="panel-body">
 
@@ -15,8 +16,25 @@
       </div>
 
       <div class="form-group">
+        <label>Пол</label>
+        <p class="form-control-static">
+          <label class="radio-inline">
+            <input type="radio" v-model="user.sex" value="M"> Мужской
+          </label>
+          <label class="radio-inline">
+            <input type="radio" v-model="user.sex" value="F"> Женский
+          </label>
+        </p>
+      </div>
+
+      <div class="form-group">
         <label>День рождения</label>
         <input type="date" class="form-control" v-model="user.birthday" />
+      </div>
+
+      <div class="form-group">
+        <label>Биография</label>
+        <textarea class="form-control" v-model="user.bio"></textarea>
       </div>
 
       <div class="form-group">
@@ -30,6 +48,10 @@
           </label>
         </div>
       </div>
+
+      <hr>
+
+      <pre>{{ user }}</pre>
 
     </div>
   </div>
@@ -54,6 +76,8 @@ export default {
         name: 'Константин Константинович',
         birthday: '12.02.1999',
         roles: [],
+        sex: 'M',
+        bio: '',
       };
     },
   },
