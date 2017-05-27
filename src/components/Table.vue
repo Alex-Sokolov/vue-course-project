@@ -5,34 +5,7 @@
     </div>
     <div class="panel-body">
 
-      <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <td>ID</td>
-            <td>Имя</td>
-            <td>Фамилия</td>
-            <td>Активен</td>
-            <td>Баланс</td>
-            <td>Email</td>
-            <td>Телефон</td>
-            <td>Зарегистрирован</td>
-          </tr>
-          <tr v-for="user in users">
-            <td>
-              <router-link :to="{ name: 'User', params: { id: user.id }}">
-                {{ user.id }}
-              </router-link>
-            </td>
-            <td v-text="user.firstName"></td>
-            <td v-text="user.lastName"></td>
-            <td v-text="user.isActive"></td>
-            <td v-text="user.balance"></td>
-            <td v-text="user.email"></td>
-            <td v-text="user.phone"></td>
-            <td v-text="user.registered"></td>
-          </tr>
-        </tbody>
-      </table>
+      <dashboard-grid :config="config" :dataSource="dataSource" title="Пользователей в базе"></dashboard-grid>
 
     </div>
   </div>
@@ -40,13 +13,66 @@
 
 <script>
 import axios from 'axios';
+import DashboardGrid from './DashboardGrid.vue';
 
 export default {
   name: 'Table',
+  components: {
+    DashboardGrid,
+  },
   data: () => ({
     test: 'Список пользователей',
 
-    users: [],
+    dataSource: {
+      url: 'http://localhost:3000/users/',
+      dataSrc: ''
+    },
+
+    //         <router-link :to="{ name: 'User', params: { id: user.id }}">
+    //           {{ user.id }}
+    //         </router-link>
+
+    config: {
+      columns: [
+        {
+          title: 'ID',
+          data: 'id',
+          type: 'num',
+          render: data => `
+              <a href="/user/${data}"># ${data}</a>
+            `
+        },
+        {
+          title: 'Имя',
+          data: 'firstName'
+        },
+        {
+          title: 'Фамилия',
+          data: 'lastName'
+        },
+        {
+          title: 'Активен',
+          data: 'isActive'
+        },
+        {
+          title: 'Баланс',
+          data: 'balance'
+        },
+        {
+          title: 'Email',
+          data: 'email'
+        },
+        {
+          title: 'Телефон',
+          data: 'phone'
+        },
+        {
+          title: 'Зарегистрирован',
+          data: 'registered'
+        }
+      ]
+
+    }
   }),
   methods: {
     loadData() {
@@ -60,7 +86,6 @@ export default {
     },
   },
   mounted() {
-    this.loadData();
   },
 };
 </script>
