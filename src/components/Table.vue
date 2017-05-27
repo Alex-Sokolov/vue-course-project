@@ -15,7 +15,11 @@
           <td>Зарегистрирован</td>
         </tr>
         <tr v-for="user in users">
-          <td v-text="user.id"></td>
+          <td>
+            <router-link :to="{ name: 'User', params: { id: user.id }}">
+              {{ user.id }}
+            </router-link>
+          </td>
           <td v-text="user.firstName"></td>
           <td v-text="user.lastName"></td>
           <td v-text="user.isActive"></td>

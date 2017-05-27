@@ -16,12 +16,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="">
-              <router-link to="/user">Открыть пользователя</router-link>
-            </li>
-            <li class="">
-              <router-link to="/list">Открыть список пользователей</router-link>
-            </li>
+            <router-link tag="li" to="/user" active-class="active">
+              <a>
+                Открыть пользователя
+              </a>
+            </router-link>
+            <router-link tag="li" to="/list" active-class="active">
+              <a>
+                Открыть список пользователей
+              </a>
+            </router-link>
           </ul>
         </div>
         <!--/.nav-collapse -->
