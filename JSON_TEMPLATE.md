@@ -1,5 +1,7 @@
 # Шаблон для генерации данных на http://beta.json-generator.com/
 
+http://beta.json-generator.com/NyN5dicg7
+
 ``` js
 [
   {
