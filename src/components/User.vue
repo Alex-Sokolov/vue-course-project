@@ -4,7 +4,7 @@
     <input type="number" v-model.number="selectedId" class="form-control" />
     <button v-on:click="loadData">Загрузить информацию по ID</button>
   </div>
-  <div v-else class="panel panel-default">
+  <div v-else class="panel panel-primary">
     <div class="panel-heading">
       <span class="pull-right">
         {{ user.id }}
@@ -43,16 +43,16 @@
       </div>
 
       <!--<div class="form-group">
-                                                                        <label>Пол</label>
-                                                                        <p class="form-control-static">
-                                                                          <label class="radio-inline">
-                                                                            <input type="radio" v-model="user.sex" value="M"> Мужской
-                                                                          </label>
-                                                                          <label class="radio-inline">
-                                                                            <input type="radio" v-model="user.sex" value="F"> Женский
-                                                                          </label>
-                                                                        </p>
-                                                                      </div>-->
+                                                                              <label>Пол</label>
+                                                                              <p class="form-control-static">
+                                                                                <label class="radio-inline">
+                                                                                  <input type="radio" v-model="user.sex" value="M"> Мужской
+                                                                                </label>
+                                                                                <label class="radio-inline">
+                                                                                  <input type="radio" v-model="user.sex" value="F"> Женский
+                                                                                </label>
+                                                                              </p>
+                                                                            </div>-->
 
       <div class="form-group">
         <label>Дата регистрации</label>
@@ -65,16 +65,16 @@
       </div>
 
       <!--<div class="form-group">
-                                                                            <label>Роли пользователя</label>
-                                                                            <span v-if="!userHaveRoles" class="label label-warning">
-                                                                              У пользователя не выбрано ни одной роли
-                                                                            </span>
-                                                                            <div class="checkbox" v-for="item in rolesList">
-                                                                              <label>
-                                                                                <input type="checkbox" :value="item" v-model="user.roles" /> {{ item }}
-                                                                              </label>
-                                                                            </div>
-                                                                          </div>-->
+                                                                                  <label>Роли пользователя</label>
+                                                                                  <span v-if="!userHaveRoles" class="label label-warning">
+                                                                                    У пользователя не выбрано ни одной роли
+                                                                                  </span>
+                                                                                  <div class="checkbox" v-for="item in rolesList">
+                                                                                    <label>
+                                                                                      <input type="checkbox" :value="item" v-model="user.roles" /> {{ item }}
+                                                                                    </label>
+                                                                                  </div>
+                                                                                </div>-->
 
       <hr>
 
