@@ -52,6 +52,10 @@
         <textarea class="form-control" v-model="user.about"></textarea>
       </div>
 
+      <button type="button" class="btn btn-success" @click="save">
+        Сохранить изменения
+      </button>
+
       <button type="button" class="btn btn-danger" @click="remove">
         Удалить пользователя
       </button>
@@ -98,6 +102,19 @@ export default {
         .then(response => response.data)
         .then((response) => {
           this.user = response;
+        })
+        .catch(err => global.console.error(err));
+    },
+
+    // Сохранение изменений
+    save() {
+      const data = this.user;
+      const id = this.selectedId;
+      const url = `http://localhost:3000/users/${id}`;
+      axios.patch(url, data)
+        .then(response => response.data)
+        .then(() => {
+          this.$router.push({ path: '/list' });
         })
         .catch(err => global.console.error(err));
     },
