@@ -73,6 +73,9 @@ import axios from 'axios';
 
 export default {
   name: 'User',
+  props: {
+    id: String
+  },
   data: () => ({
     selectedId: null,
 
@@ -132,7 +135,9 @@ export default {
     }
   },
   mounted() {
-    this.selectedId = this.$route.params.id;
+    if (this.id) {
+      this.selectedId = this.id;
+    }
     this.loadData();
   },
 };
