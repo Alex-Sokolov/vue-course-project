@@ -42,18 +42,6 @@
         <input type="text" class="form-control" v-model="user.phone" />
       </div>
 
-      <!--<div class="form-group">
-                                                                              <label>Пол</label>
-                                                                              <p class="form-control-static">
-                                                                                <label class="radio-inline">
-                                                                                  <input type="radio" v-model="user.sex" value="M"> Мужской
-                                                                                </label>
-                                                                                <label class="radio-inline">
-                                                                                  <input type="radio" v-model="user.sex" value="F"> Женский
-                                                                                </label>
-                                                                              </p>
-                                                                            </div>-->
-
       <div class="form-group">
         <label>Дата регистрации</label>
         <input type="date" class="form-control" v-model="user.registered" />
@@ -64,17 +52,9 @@
         <textarea class="form-control" v-model="user.about"></textarea>
       </div>
 
-      <!--<div class="form-group">
-                                                                                  <label>Роли пользователя</label>
-                                                                                  <span v-if="!userHaveRoles" class="label label-warning">
-                                                                                    У пользователя не выбрано ни одной роли
-                                                                                  </span>
-                                                                                  <div class="checkbox" v-for="item in rolesList">
-                                                                                    <label>
-                                                                                      <input type="checkbox" :value="item" v-model="user.roles" /> {{ item }}
-                                                                                    </label>
-                                                                                  </div>
-                                                                                </div>-->
+      <button type="button" class="btn btn-danger" @click="remove">
+        Удалить пользователя
+      </button>
 
       <hr>
 
@@ -110,6 +90,7 @@ export default {
     },
   },
   methods: {
+    // Загрузка данных пользователя
     loadData() {
       const id = this.selectedId;
       const url = `http://localhost:3000/users/${id}`;
@@ -120,6 +101,18 @@ export default {
         })
         .catch(err => global.console.error(err));
     },
+
+    // Удаление пользователя
+    remove() {
+      const id = this.selectedId;
+      const url = `http://localhost:3000/users/${id}`;
+      axios.delete(url)
+        .then(response => response.data)
+        .then(() => {
+          this.$router.push({ path: '/list' });
+        })
+        .catch(err => global.console.error(err));
+    }
   },
   mounted() {
     this.selectedId = this.$route.params.id;
