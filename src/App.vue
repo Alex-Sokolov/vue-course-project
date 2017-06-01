@@ -21,12 +21,7 @@
                 Список пользователей
               </a>
             </router-link>
-            <router-link tag="li" to="/user" active-class="active" exact>
-              <a>
-                Открыть пользователя
-              </a>
-            </router-link>
-            <router-link tag="li" to="/user/new" active-class="active" exact>
+            <router-link tag="li" to="/user/add" active-class="active" exact>
               <a>
                 Добавить пользователя
               </a>

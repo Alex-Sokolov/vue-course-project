@@ -21,15 +21,15 @@ export default new Router({
       component: Table,
     },
     {
-      path: '/user',
-      name: 'UserHome',
+      path: '/user/add',
+      name: 'UserAdd',
       component: User,
     },
     {
       path: '/user/:id',
       name: 'User',
       component: User,
-      props: true
+      props: true,
     },
   ],
 });

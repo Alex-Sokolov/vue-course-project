@@ -2,7 +2,8 @@
   <div v-if="!user" class="alert alert-danger">
     Укажите ID пользователя и нажмите кнопку загрузки
     <input type="number" v-model.number="selectedId" class="form-control" />
-    <button v-on:click="loadData">Загрузить информацию по ID</button>
+    <button @click="loadData">Загрузить информацию по ID</button>
+    <button @click="fillNew">Добавить пользователя</button>
   </div>
   <div v-else class="panel panel-primary">
     <div class="panel-heading">
@@ -56,7 +57,7 @@
         Сохранить изменения
       </button>
 
-      <button type="button" class="btn btn-danger" @click="remove">
+      <button type="button" class="btn btn-danger" v-if="selectedId" @click="remove">
         Удалить пользователя
       </button>
 
@@ -111,6 +112,25 @@ export default {
 
     // Сохранение изменений
     save() {
+      if (this.user.id) {
+        this.updateExist();
+      }
+
+      this.addNew();
+    },
+
+    addNew() {
+      const data = this.user;
+      const url = 'http://localhost:3000/users/';
+      axios.post(url, data)
+        .then(response => response.data)
+        .then(() => {
+          this.$router.push({ path: '/list' });
+        })
+        .catch(err => global.console.error(err));
+    },
+
+    updateExist() {
       const data = this.user;
       const id = this.selectedId;
       const url = `http://localhost:3000/users/${id}`;
@@ -132,13 +152,33 @@ export default {
           this.$router.push({ path: '/list' });
         })
         .catch(err => global.console.error(err));
+    },
+
+    fillNew() {
+      this.user = {
+        id: 0,
+        guid: '',
+        isActive: true,
+        balance: '',
+        picture: '',
+        age: 0,
+        eyeColor: '',
+        firstName: '',
+        lastName: '',
+        company: '',
+        email: '',
+        phone: '',
+        address: '',
+        about: '',
+        registered: ''
+      };
     }
   },
   mounted() {
     if (this.id) {
       this.selectedId = this.id;
+      this.loadData();
     }
-    this.loadData();
   },
 };
 </script>
