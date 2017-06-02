@@ -10,9 +10,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <router-link to="/" class="navbar-brand">
             Vue.js course project
-          </a>
+          </router-link>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -38,14 +38,14 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app',
-};
-</script>
-
 <style>
 #app {
   margin-top: 60px;
 }
 </style>
+
+<script>
+export default {
+  name: 'app',
+};
+</script>

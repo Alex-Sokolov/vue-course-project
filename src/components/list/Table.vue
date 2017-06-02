@@ -12,8 +12,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import DashboardGrid from './DashboardGrid.vue';
+import DashboardGrid from '../common/DashboardGrid.vue';
 
 export default {
   name: 'Table',
@@ -21,17 +20,16 @@ export default {
     DashboardGrid,
   },
   data: () => ({
+    // Заголовок таблицы
     test: 'Список пользователей',
 
+    // Источник данных DataTables
     dataSource: {
       url: 'http://localhost:3004/users/',
       dataSrc: ''
     },
 
-    //         <router-link :to="{ name: 'User', params: { id: user.id }}">
-    //           {{ user.id }}
-    //         </router-link>
-
+    // Конфигурация DataTables
     config: {
       columns: [
         {
@@ -73,19 +71,6 @@ export default {
       ]
 
     }
-  }),
-  methods: {
-    loadData() {
-      const url = 'http://localhost:3004/users/';
-      axios.get(url)
-        .then(response => response.data)
-        .then((response) => {
-          this.users = response;
-        })
-        .catch(err => global.console.error(err));
-    },
-  },
-  mounted() {
-  },
+  })
 };
 </script>

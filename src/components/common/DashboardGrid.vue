@@ -28,6 +28,7 @@
 </style>
 
 <script>
+// Используемые плагины
 import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs';

@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
 
-    <router-link to="/user">Открыть пользователя</router-link>
+    <router-link to="/user/add">Добавить пользователя</router-link>
     <router-link to="/list">Открыть список пользователей</router-link>
   </div>
 </template>
@@ -18,7 +18,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
