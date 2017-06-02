@@ -50,15 +50,15 @@ export default {
   components: {
     Datepicker
   },
+  model: {
+    prop: 'user',
+  },
   props: {
-    value: {
+    user: {
       type: Object,
       required: true
     }
   },
-  data: () => ({
-    user: null
-  }),
   watch: {
     user: 'updatedUser'
   },
@@ -66,9 +66,6 @@ export default {
     updatedUser() {
       this.$emit('input', this.user);
     },
-  },
-  mounted() {
-    this.user = this.value;
   }
 };
 </script>

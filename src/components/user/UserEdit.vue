@@ -1,28 +1,34 @@
 <template>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <span class="pull-right">
-        {{ user.id }}
-      </span>
-
-      {{ title }}
+  <div>
+    <div v-if="!user" class="alert alert-warning">
+      <i class="fa fa-refresh fa-spin"></i>
+      Загрузка
     </div>
-    <div class="panel-body">
+    <div v-else class="panel panel-primary">
+      <div class="panel-heading">
+        <span class="pull-right">
+          {{ user.id }}
+        </span>
 
-      <user-form v-if="user" v-model="user"></user-form>
+        {{ title }}
+      </div>
+      <div class="panel-body">
 
-      <button type="button" class="btn btn-success" @click="save">
-        Сохранить изменения
-      </button>
+        <user-form v-model="user"></user-form>
 
-      <button type="button" class="btn btn-danger" @click="remove">
-        Удалить пользователя
-      </button>
+        <button type="button" class="btn btn-success" @click="save">
+          Сохранить изменения
+        </button>
 
-      <hr>
+        <button type="button" class="btn btn-danger" @click="remove">
+          Удалить пользователя
+        </button>
 
-      <pre>{{ user }}</pre>
+        <hr>
 
+        <pre>{{ user }}</pre>
+
+      </div>
     </div>
   </div>
 </template>
