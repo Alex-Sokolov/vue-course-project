@@ -2,7 +2,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading">
       <span class="pull-right">
-        {{ user.id }}
+        Новый пользователь
       </span>
 
       Пользователь
@@ -25,8 +25,25 @@
 
 <script>
 import axios from 'axios';
-
 import UserForm from './UserForm.vue';
+
+const defaultUser = {
+  id: null,
+  guid: '',
+  isActive: true,
+  balance: '',
+  picture: '',
+  age: 0,
+  eyeColor: '',
+  firstName: '',
+  lastName: '',
+  company: '',
+  email: '',
+  phone: '',
+  address: '',
+  about: '',
+  registered: ''
+};
 
 export default {
   name: 'UserAdd',
@@ -34,7 +51,7 @@ export default {
     UserForm
   },
   data: () => ({
-    user: null,
+    user: defaultUser,
     url: 'http://localhost:3004/users/',
   }),
   methods: {

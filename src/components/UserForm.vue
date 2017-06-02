@@ -42,30 +42,12 @@
 </template>
 
 <script>
-const defaultUser = {
-  id: null,
-  guid: '',
-  isActive: true,
-  balance: '',
-  picture: '',
-  age: 0,
-  eyeColor: '',
-  firstName: '',
-  lastName: '',
-  company: '',
-  email: '',
-  phone: '',
-  address: '',
-  about: '',
-  registered: ''
-};
-
 export default {
   name: 'UserForm',
   props: {
     value: {
       type: Object,
-      default: defaultUser
+      required: true
     }
   },
   data: () => ({
