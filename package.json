@@ -9,7 +9,7 @@
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "fake": "json-server --watch db.json"
+    "fake": "json-server --watch db.json --port 3004"
   },
   "dependencies": {
     "axios": "^0.16.1",

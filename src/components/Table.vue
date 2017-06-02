@@ -24,7 +24,7 @@ export default {
     test: 'Список пользователей',
 
     dataSource: {
-      url: 'http://localhost:3000/users/',
+      url: 'http://localhost:3004/users/',
       dataSrc: ''
     },
 
@@ -76,7 +76,7 @@ export default {
   }),
   methods: {
     loadData() {
-      const url = 'http://localhost:3000/users/';
+      const url = 'http://localhost:3004/users/';
       axios.get(url)
         .then(response => response.data)
         .then((response) => {
