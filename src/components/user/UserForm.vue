@@ -31,7 +31,7 @@
 
       <div class="form-group">
         <label>Дата регистрации</label>
-        <input type="date" class="form-control" v-model="user.registered" />
+        <datepicker v-model="user.registered"></datepicker>
       </div>
 
       <div class="form-group">
@@ -42,8 +42,14 @@
 </template>
 
 <script>
+// Используемые плагины
+import Datepicker from '@/components/common/datepicker.vue';
+
 export default {
   name: 'UserForm',
+  components: {
+    Datepicker
+  },
   props: {
     value: {
       type: Object,

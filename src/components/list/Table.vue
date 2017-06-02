@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import DashboardGrid from '../common/DashboardGrid.vue';
+// Используемые плагины
+import DashboardGrid from '@/components/common/DashboardGrid.vue';
 
 export default {
   name: 'Table',
