@@ -54,15 +54,18 @@ export default {
     prop: 'user',
   },
   props: {
+    // Пользователь
     user: {
       type: Object,
       required: true
     }
   },
   watch: {
+    // Отслеживание изменений в форме
     user: 'updatedUser'
   },
   methods: {
+    // Отправка нового объекта пользователя с событием
     updatedUser() {
       this.$emit('input', this.user);
     },

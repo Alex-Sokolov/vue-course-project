@@ -1,3 +1,5 @@
+<!-- Страница со списком пользователей -->
+
 <template>
   <div class="panel panel-primary">
     <div class="panel-heading">

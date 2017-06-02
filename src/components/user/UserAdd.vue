@@ -1,3 +1,5 @@
+<!-- Компонент добавления нового пользователя -->
+
 <template>
   <div class="panel panel-primary">
     <div class="panel-heading">

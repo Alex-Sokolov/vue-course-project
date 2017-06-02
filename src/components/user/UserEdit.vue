@@ -1,3 +1,5 @@
+<!-- Компонент редактирования пользователя -->
+
 <template>
   <div>
     <div v-if="!user" class="alert alert-warning">

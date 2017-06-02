@@ -1,4 +1,4 @@
-<!-- Компонент календарика -->
+<!-- Компонент календарика с плагином Flatpickr -->
 
 <template>
   <div class="js-datepicker">
