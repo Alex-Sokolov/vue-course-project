@@ -32,9 +32,9 @@ import UserForm from './UserForm.vue';
 const defaultUser = {
   id: null,
   guid: '',
-  isActive: true,
+  isActive: false,
   balance: '',
-  picture: '',
+  picture: 'http://placehold.it/128x128',
   age: 0,
   eyeColor: '',
   firstName: '',
