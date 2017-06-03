@@ -7,6 +7,11 @@ import router from './router';
 
 Vue.config.productionTip = false;
 
+window.addEventListener('unhandledrejection', (event) => {
+  window.console.error(event.promise);
+  window.console.error(event.reason);
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

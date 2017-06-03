@@ -62,8 +62,7 @@ export default {
         .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });
-        })
-        .catch(err => global.console.error(err));
+        });
     },
   }
 };

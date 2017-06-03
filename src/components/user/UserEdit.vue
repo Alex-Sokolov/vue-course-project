@@ -71,8 +71,7 @@ export default {
         .then(response => response.data)
         .then((response) => {
           this.user = response;
-        })
-        .catch(err => global.console.error(err));
+        });
     },
 
     // Сохранение изменений
@@ -84,12 +83,12 @@ export default {
         .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });
-        })
-        .catch(err => global.console.error(err));
+        });
     },
 
     // Удаление пользователя
     remove() {
+      // eslint-disable-next-line
       const confirmed = confirm('Удалить пользователя?');
       if (!confirmed) {
         return;
@@ -101,8 +100,7 @@ export default {
         .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });
-        })
-        .catch(err => global.console.error(err));
+        });
     },
   },
   mounted() {
