@@ -56,9 +56,7 @@ export default {
     initCalendar() {
       this.fp = new Flatpickr(this.$refs.datepicker, {
         locale: ru,
-        altInput: true,
-        altFormat: 'd.m.Y',
-        dateFormat: 'Y-m-d',
+        dateFormat: 'd.m.Y',
         onChange: (selectedDates, dateStr) => {
           this.$emit('input', dateStr);
         }
