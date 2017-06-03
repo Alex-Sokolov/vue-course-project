@@ -94,6 +94,11 @@ export default {
 
     // Удаление пользователя
     remove() {
+      const confirmed = confirm('Удалить пользователя?');
+      if (!confirmed) {
+        return;
+      }
+
       const url = `${this.url}${this.id}`;
 
       axios.delete(url)
