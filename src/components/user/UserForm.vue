@@ -72,6 +72,10 @@
       <datepicker v-model="user.registered"></datepicker>
     </div>
 
+    <hr>
+
+    <pre>{{ user }}</pre>
+
   </div>
 </template>
 

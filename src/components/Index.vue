@@ -4,8 +4,13 @@
   <div class="hello">
     <h1>{{ title }}</h1>
 
-    <router-link to="/user/add">Добавить пользователя</router-link>
-    <router-link to="/list">Открыть список пользователей</router-link>
+    <router-link to="/user/add">
+      Добавить пользователя
+    </router-link>
+    <router-link to="/list">
+      Открыть список пользователей
+    </router-link>
+
   </div>
 </template>
 

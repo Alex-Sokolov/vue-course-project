@@ -7,8 +7,6 @@
 </template>
 
 <style>
-/* Отключаем серый фон readonly-полей календарей */
-
 .js-datepicker .flatpickr-input {
   background-color: #fff;
 }

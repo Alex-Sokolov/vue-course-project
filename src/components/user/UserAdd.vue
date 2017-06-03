@@ -17,10 +17,6 @@
         Создать пользователя
       </button>
 
-      <hr>
-
-      <pre>{{ user }}</pre>
-
     </div>
   </div>
 </template>
