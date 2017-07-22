@@ -12,8 +12,12 @@
     <div class="panel-body">
 
       <div class="form-group">
-        <strong>{{ rowsPerPage }}</strong>
-        <rows-picker v-model="rowsPerPage"></rows-picker>
+        <div class="col-md-2">
+          <rows-picker v-model.number="rowsPerPage"></rows-picker>
+        </div>
+        <div class="col-md-4">
+          <p class="form-control-static">Выбрано элементов на страницу {{ rowsPerPage }}</p>
+        </div>
       </div>
 
       <table ref="table" class="table table-striped">
@@ -21,11 +25,16 @@
           <slot name="header"></slot>
         </thead>
         <tbody>
-          <tr v-for="item in list" :key="item.id">
+          <tr v-for="item in filteredRows" :key="item.id">
             <slot name="row" v-bind="item"></slot>
           </tr>
         </tbody>
       </table>
+
+      <div class="form-group">
+        <strong>Выбрана страница {{ selectedPage }}</strong>
+        <rows-paginator v-model.number="selectedPage" :per-page="rowsPerPage" :total="totalRows"></rows-paginator>
+      </div>
     </div>
   </div>
 </template>
@@ -36,11 +45,13 @@ import axios from 'axios';
 
 // Используемые компоненты
 import RowsPicker from './Dashboard/RowsPerPage.vue';
+import RowsPaginator from './Dashboard/RowsPaginator.vue';
 
 export default {
   name: 'DashboardGrid',
   components: {
-    RowsPicker
+    RowsPicker,
+    RowsPaginator
   },
   props: {
     // Заголовок таблицы
@@ -62,6 +73,9 @@ export default {
     // Количество строк на страницу
     rowsPerPage: 5,
 
+    // Отображаемая страница
+    selectedPage: 1,
+
     // Флаг обновления данных
     loading: false,
   }),
@@ -69,6 +83,23 @@ export default {
     // Количество строк в таблице
     totalRows() {
       return this.list.length;
+    },
+
+    // Отображаемые строки таблицы
+    filteredRows() {
+      return this.list
+        .filter((item, index) => {
+          const startIndex = (this.selectedPage - 1) * this.rowsPerPage;
+          const finalIndex = startIndex + this.rowsPerPage;
+
+          return startIndex <= index && index < finalIndex;
+        });
+    }
+  },
+  watch: {
+    // При изменении количества элементов на страницу
+    rowsPerPage() {
+      this.selectedPage = 1;
     }
   },
   methods: {

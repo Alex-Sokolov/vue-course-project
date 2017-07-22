@@ -1,5 +1,5 @@
 <template>
-  <select :value="value" @input="changed">
+  <select :value="value" @input="changed" class="form-control">
     <option v-for="item in list" :key="item" :value="item">
       {{ item }}
     </option>
