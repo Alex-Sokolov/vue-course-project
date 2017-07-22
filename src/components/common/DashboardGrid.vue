@@ -10,6 +10,12 @@
       {{ title }} &ndash; {{ totalRows }}
     </div>
     <div class="panel-body">
+
+      <div class="form-group">
+        <strong>{{ rowsPerPage }}</strong>
+        <rows-picker v-model="rowsPerPage"></rows-picker>
+      </div>
+
       <table ref="table" class="table table-striped">
         <thead>
           <slot name="header"></slot>
@@ -28,8 +34,14 @@
 // Используемые плагины
 import axios from 'axios';
 
+// Используемые компоненты
+import RowsPicker from './Dashboard/RowsPerPage.vue';
+
 export default {
   name: 'DashboardGrid',
+  components: {
+    RowsPicker
+  },
   props: {
     // Заголовок таблицы
     title: {
@@ -46,6 +58,9 @@ export default {
   data: () => ({
     // Список для таблицы
     list: [],
+
+    // Количество строк на страницу
+    rowsPerPage: 5,
 
     // Флаг обновления данных
     loading: false,
