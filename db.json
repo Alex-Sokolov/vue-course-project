@@ -4,7 +4,7 @@
       "id": 0,
       "isActive": false,
       "balance": "$1,913.57",
-      "picture": "http://placehold.it/128x128",
+      "picture": "http://i.imgur.com/xmm2bjD.png",
       "age": 32,
       "accessLevel": "user",
       "firstName": "Mabel",
@@ -175,6 +175,24 @@
       "address": "587 Kenilworth Place, Collins, Maryland, 2616",
       "about": "Qui eu qui non laboris aliqua est pariatur sint culpa. Incididunt aute cupidatat eu proident non voluptate eiusmod tempor fugiat. Sit aute irure occaecat adipisicing pariatur adipisicing non ipsum eu mollit. Ea incididunt pariatur officia consequat. Ullamco mollit aliquip et pariatur ipsum dolor fugiat eu consectetur voluptate enim. Consectetur ut ea anim commodo minim. Excepteur in in magna velit reprehenderit ullamco ad voluptate eiusmod labore ad nulla.",
       "registered": "22.02.2015"
+    },
+    {
+      "id": 11,
+      "guid": "",
+      "isActive": false,
+      "balance": "0",
+      "picture": "http://placehold.it/128x128",
+      "age": "32",
+      "eyeColor": "",
+      "firstName": "Тестовый",
+      "lastName": "Тестов",
+      "company": "компания",
+      "email": "",
+      "phone": "87876867867",
+      "address": "адрес никакой",
+      "about": "биография",
+      "registered": "20.07.2017",
+      "accessLevel": "guest"
     }
   ]
 }
