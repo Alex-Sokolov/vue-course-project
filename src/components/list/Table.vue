@@ -19,7 +19,9 @@
           <th>Зарегистрирован</th>
         </tr>
         <template slot="row" scope="props">
-          <td><a :href="`/user/${props.id}`"># {{ props.id }}</a></td>
+          <td>
+            <a :href="`/user/${props.id}`"># {{ props.id }}</a>
+          </td>
           <td>{{ props.firstName }}</td>
           <td>{{ props.lastName }}</td>
           <td>{{ props.isActive }}</td>

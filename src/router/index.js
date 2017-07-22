@@ -11,9 +11,9 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: Index, },
-    { path: '/list', component: Table, },
-    { path: '/user/add', component: UserAdd, },
-    { path: '/user/:id', component: UserEdit, props: true, },
+    { path: '/', component: Index },
+    { path: '/list', component: Table },
+    { path: '/user/add', component: UserAdd },
+    { path: '/user/:id', component: UserEdit, props: true },
   ],
 });
