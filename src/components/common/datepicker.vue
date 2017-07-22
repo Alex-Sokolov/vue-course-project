@@ -14,7 +14,7 @@
 
 <script>
 // Плагин календаря, локализация, стили
-import Flatpickr from 'flatpickr';
+import flatpickr from 'flatpickr';
 import { ru } from 'flatpickr/dist/l10n/ru';
 import 'flatpickr/dist/flatpickr.css';
 
@@ -52,7 +52,7 @@ export default {
 
     // Инициализация плагина календаря
     initCalendar() {
-      this.fp = new Flatpickr(this.$refs.datepicker, {
+      this.fp = flatpickr(this.$refs.datepicker, {
         locale: ru,
         dateFormat: 'd.m.Y',
         onChange: (selectedDates, dateStr) => {
