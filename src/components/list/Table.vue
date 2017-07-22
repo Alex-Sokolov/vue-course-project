@@ -20,7 +20,7 @@
         </tr>
         <template slot="row" scope="props">
           <td>
-            <a :href="`/user/${props.id}`"># {{ props.id }}</a>
+            <router-link :to="`/user/${props.id}`"># {{ props.id }}</router-link>
           </td>
           <td>{{ props.firstName }}</td>
           <td>{{ props.lastName }}</td>
