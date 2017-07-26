@@ -193,6 +193,23 @@
       "about": "биография",
       "registered": "20.07.2017",
       "accessLevel": "guest"
+    },
+    {
+      "id": 12,
+      "guid": "",
+      "isActive": false,
+      "balance": "",
+      "picture": "http://placehold.it/128x128",
+      "age": 0,
+      "eyeColor": "",
+      "firstName": "",
+      "lastName": "",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "about": "",
+      "registered": ""
     }
   ]
 }
