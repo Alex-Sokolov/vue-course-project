@@ -13,7 +13,7 @@
       <input type="text" class="form-control" v-model="user.lastName" />
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ref="imagezone">
       <label>URL картинки</label>
       <p>
         <img class="img-thumbnail" :src="user.picture" />
@@ -90,6 +90,8 @@
 <script>
 // Используемые плагины
 import axios from 'axios';
+import Dropzone from 'dropzone';
+import 'dropzone/dist/dropzone.css';
 
 // Используемые компоненты
 import Datepicker from '@/components/common/datepicker.vue';
@@ -148,7 +150,31 @@ export default {
           this.user.picture = response.data.link;
           this.$refs.image.value = '';
         })
+    },
+
+    initDropzone() {
+      /* eslint-disable no-new */
+      new Dropzone(this.$refs.imagezone, {
+        url: "https://api.imgur.com/3/image",
+        paramName: "image",
+        acceptedFiles: "image/*",
+        method: "post",
+        headers: {
+          'Cache-Control': null,
+          'X-Requested-With': null,
+          'Authorization': "Client-ID 3bef0b8892d4b04"
+        },
+        createImageThumbnails: false,
+        previewTemplate: '<div style="display:none"></div>',
+        success: (file, response) => {
+          this.user.picture = response.data.link;
+          this.$refs.image.value = '';
+        }
+      });
     }
+  },
+  mounted() {
+    this.initDropzone();
   }
 };
 </script>

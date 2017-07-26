@@ -1720,6 +1720,10 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
+dropzone@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/dropzone/-/dropzone-5.1.1.tgz#9f5b02fc4aa84e6466e046ba770bc82776ea49de"
+
 duplexer2@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
