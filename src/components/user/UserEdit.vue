@@ -50,7 +50,7 @@ export default {
   }),
   computed: {
     title() {
-      return !this.user
+      return !this.user.firstName || !this.user.lastName
         ? 'Пользователь'
         : [
           this.user.firstName,
