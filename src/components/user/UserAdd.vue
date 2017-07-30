@@ -62,6 +62,13 @@ export default {
   methods: {
     // Сохранение изменений
     save() {
+      // Валидация пользователя
+      this.$validator.validateAll()
+      if (this.errors.any()) {
+        alert('Не все поля заполнены!')
+        return;
+      }
+
       axios.post(this.url, this.user)
         .then(response => response.data)
         .then(() => {

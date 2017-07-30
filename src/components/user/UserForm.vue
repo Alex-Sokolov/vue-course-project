@@ -3,14 +3,28 @@
 <template>
   <div>
 
-    <div class="form-group">
+    <div class="form-group" :class="{ 'has-error': errors.has('firstName') }">
       <label>Имя</label>
-      <input type="text" class="form-control" v-model="user.firstName" />
+      <input type="text" class="form-control" v-model="user.firstName" name="firstName" v-validate="'required'" />
+      <span v-show="errors.has('firstName')" class="help-block text-danger">
+        {{ errors.first('firstName') }}
+      </span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" :class="{ 'has-error': errors.has('lastName') }">
       <label>Фамилия</label>
-      <input type="text" class="form-control" v-model="user.lastName" />
+      <input type="text" class="form-control" v-model="user.lastName" name="lastName" v-validate="'required'" />
+      <span v-show="errors.has('lastName')" class="help-block text-danger">
+        {{ errors.first('lastName') }}
+      </span>
+    </div>
+
+    <div class="form-group" :class="{ 'has-error': errors.has('email') }">
+      <label>Email</label>
+      <input type="text" class="form-control" v-model="user.email" name="email" v-validate="'required|email'" />
+      <span v-show="errors.has('email')" class="help-block text-danger">
+        {{ errors.first('email') }}
+      </span>
     </div>
 
     <div class="form-group" ref="imagezone">
@@ -92,16 +106,24 @@
 import axios from 'axios';
 import Dropzone from 'dropzone';
 import 'dropzone/dist/dropzone.css';
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 
 // Используемые компоненты
 import Datepicker from '@/components/common/datepicker.vue';
 
+// Подключаем vee-validate
+Vue.use(VeeValidate);
+
 export default {
   name: 'UserForm',
+  // Прокидываем область видимости родителя для валидации
+  inject: ['$validator'],
   components: {
     Datepicker
   },
   model: {
+    // Настраиваем компоненту работу с v-model
     prop: 'user',
   },
   props: {
@@ -114,16 +136,7 @@ export default {
   data: () => ({
     accessList: ['guest', 'user', 'admin']
   }),
-  watch: {
-    // Отслеживание изменений в форме
-    user: 'updatedUser'
-  },
   methods: {
-    // Отправка нового объекта пользователя с событием
-    updatedUser() {
-      this.$emit('input', this.user);
-    },
-
     // Показать окно выбора файла
     selectNewImage() {
       this.$refs.image.click();
