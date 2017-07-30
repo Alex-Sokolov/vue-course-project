@@ -22,9 +22,13 @@
 </template>
 
 <script>
+// Используемые плагины
 import axios from 'axios';
+
+// Используемые компоненты
 import UserForm from './UserForm.vue';
 
+// Модель для пустого пользователя
 const defaultUser = {
   id: null,
   guid: '',
@@ -49,16 +53,16 @@ export default {
     UserForm
   },
   data: () => ({
+    // Редактируемый пользователь
     user: defaultUser,
+
+    //  REST URL
     url: 'http://localhost:3004/users/',
   }),
   methods: {
-
     // Сохранение изменений
     save() {
-      const data = this.user;
-
-      axios.post(this.url, data)
+      axios.post(this.url, this.user)
         .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });

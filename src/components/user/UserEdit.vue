@@ -39,16 +39,26 @@ import UserForm from './UserForm.vue';
 export default {
   name: 'UserEdit',
   props: {
+    // ID редактируемого пользователя
     id: String
   },
   components: {
     UserForm
   },
   data: () => ({
+    // Объект с данными редактируемого пользователя
     user: null,
-    url: 'http://localhost:3004/users/',
+
+    // REST URL
+    restUrl: 'http://localhost:3004/users/',
   }),
   computed: {
+    // URL для работы с текущим пользователем
+    url() {
+      return `${this.restUrl}${this.id}`
+    },
+
+    // Заголовок окна формы
     title() {
       return !this.user.firstName || !this.user.lastName
         ? 'Пользователь'
@@ -60,14 +70,13 @@ export default {
     },
   },
   watch: {
+    // Обновление данных при изменениях маршрута
     $route: 'loadData'
   },
   methods: {
     // Загрузка данных пользователя
     loadData() {
-      const url = `http://localhost:3004/users/${this.id}`;
-
-      axios.get(url)
+      axios.get(this.url)
         .then(response => response.data)
         .then((response) => {
           this.user = response;
@@ -76,10 +85,7 @@ export default {
 
     // Сохранение изменений
     save() {
-      const data = this.user;
-      const url = `${this.url}${this.id}`;
-
-      axios.patch(url, data)
+      axios.patch(this.url, this.user)
         .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });
@@ -104,7 +110,6 @@ export default {
     },
   },
   mounted() {
-    // Загрузка данных о пользователе
     this.loadData();
   },
 };
