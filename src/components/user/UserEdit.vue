@@ -100,9 +100,7 @@ export default {
         return;
       }
 
-      const url = `${this.url}${this.id}`;
-
-      axios.delete(url)
+      axios.delete(this.url)
         .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });
