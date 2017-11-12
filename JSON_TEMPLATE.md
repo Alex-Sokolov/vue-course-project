@@ -1,4 +1,4 @@
-# Шаблон для генерации данных на http://beta.json-generator.com/
+# Шаблон для генерации данных на http://json-generator.com/
 
 ``` js
 [
