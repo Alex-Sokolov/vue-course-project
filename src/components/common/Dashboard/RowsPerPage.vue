@@ -1,5 +1,7 @@
+<!-- Компонент выбора количества строк на страницу таблицы -->
+
 <template>
-  <select :value="value" @input="changed" class="form-control">
+  <select class="form-control" :value="value" @input="changed($event.target.value)">
     <option v-for="item in list" :key="item" :value="item">
       {{ item }}
     </option>
@@ -14,16 +16,19 @@ export default {
     value: {
       type: Number,
       required: true
+    },
+
+    // Список вариантов количеств строк на страницу
+    // т.к. возвращаем массив, то должны использовать функцию возвращающую массив
+    list: {
+      type: Array,
+      default: () => ([2, 5, 10, 100])
     }
   },
-  data: () => ({
-    // Список вариантов
-    list: [2, 5, 10, 100]
-  }),
   methods: {
     // Выбор нового количества строк на страницу
-    changed(event) {
-      this.$emit('input', event.target.value);
+    changed(value) {
+      this.$emit('input', value);
     }
   }
 }

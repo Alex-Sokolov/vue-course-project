@@ -11,11 +11,13 @@
     </div>
     <div class="panel-body">
 
-      <user-form v-model="user"></user-form>
-
-      <button type="button" class="btn btn-success" @click="save">
-        Создать пользователя
-      </button>
+      <user-form v-model="user">
+        <div slot="buttons">
+          <button type="button" class="btn btn-success" @click="save">
+            Создать пользователя
+          </button>
+        </div>
+      </user-form>
 
     </div>
   </div>
@@ -62,16 +64,21 @@ export default {
   methods: {
     // Сохранение изменений
     save() {
-      // Валидация пользователя
+      // Валидация пользователя через vee-validate
+      // внутри формы мы инъектируем $validator
       this.$validator.validateAll()
       if (this.errors.any()) {
+        // eslint-disable-next-line
         alert('Не все поля заполнены!')
         return;
       }
 
       axios.post(this.url, this.user)
-        .then(response => response.data)
         .then(() => {
+          // После успешного создания пользователя
+          // переходим на страницу с таблицей
+          // или можно перейти на страницу редактирования
+          // так как в ответе приходит тот же объект, но с ID
           this.$router.push({ path: '/list' });
         });
     },

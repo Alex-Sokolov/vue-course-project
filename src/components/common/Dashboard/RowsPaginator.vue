@@ -1,21 +1,27 @@
+<!-- Компонент для пагинации по таблице -->
+
 <template>
   <nav aria-label="Page navigation">
     <ul class="pagination">
-      <li :class="{ disabled: value === 1 }">
+
+      <li :class="{ disabled: page === 1 }">
         <a href="#" aria-label="Previous" @click.prevent="prevPage">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li v-for="item in maxPages" :key="item" :class="{ active: value === item }">
+
+      <li v-for="item in maxPages" :key="item" :class="{ active: page === item }">
         <a href="#" @click.prevent="selectPage(item)">
           {{ item }}
         </a>
       </li>
-      <li :class="{ disabled: value === maxPages }">
+
+      <li :class="{ disabled: page === maxPages }">
         <a href="#" aria-label="Next" @click.prevent="nextPage">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
+
     </ul>
   </nav>
 </template>
@@ -23,9 +29,12 @@
 <script>
 export default {
   name: 'RowsPaginator',
+  model: {
+    prop: 'page'
+  },
   props: {
     // Выбранная страница
-    value: {
+    page: {
       type: Number,
       required: true
     },
@@ -51,7 +60,7 @@ export default {
   methods: {
     // Предыдущая страница
     prevPage() {
-      const pageNum = this.value - 1;
+      const pageNum = this.page - 1;
       if (pageNum > 0) {
         this.selectPage(pageNum);
       }
@@ -59,7 +68,7 @@ export default {
 
     // Следующая страница
     nextPage() {
-      const pageNum = this.value + 1;
+      const pageNum = this.page + 1;
       if (pageNum <= this.maxPages) {
         this.selectPage(pageNum);
       }

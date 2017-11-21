@@ -16,15 +16,17 @@
       </div>
       <div class="panel-body">
 
-        <user-form v-model="user"></user-form>
+        <user-form v-model="user">
+          <div slot="buttons">
+            <button type="button" class="btn btn-success" @click="save">
+              Сохранить изменения
+            </button>
 
-        <button type="button" class="btn btn-success" @click="save">
-          Сохранить изменения
-        </button>
-
-        <button type="button" class="btn btn-danger" @click="remove">
-          Удалить пользователя
-        </button>
+            <button type="button" class="btn btn-danger" @click="remove">
+              Удалить пользователя
+            </button>
+          </div>
+        </user-form>
 
       </div>
     </div>
@@ -71,6 +73,7 @@ export default {
   },
   watch: {
     // Обновление данных при изменениях маршрута
+    // или можно через хук beforeRouteUpdate
     $route: 'loadData'
   },
   methods: {
@@ -85,15 +88,17 @@ export default {
 
     // Сохранение изменений
     save() {
-      // Валидация пользователя
+      // Валидация пользователя через vee-validate
+      // внутри формы мы инъектируем $validator
       this.$validator.validateAll()
       if (this.errors.any()) {
+        // eslint-disable-next-line
         alert('Не все поля заполнены!')
         return;
       }
 
+      // После обновления перекидываем на страницу с таблицей
       axios.patch(this.url, this.user)
-        .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });
         });
@@ -107,8 +112,8 @@ export default {
         return;
       }
 
+      // После удаления перекидываем на страницу с таблицей
       axios.delete(this.url)
-        .then(response => response.data)
         .then(() => {
           this.$router.push({ path: '/list' });
         });

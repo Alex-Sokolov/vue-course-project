@@ -87,6 +87,8 @@
 
     <pre>{{ user }}</pre>
 
+    <slot name="buttons"></slot>
+
   </div>
 </template>
 
