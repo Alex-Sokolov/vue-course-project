@@ -37,17 +37,14 @@
 </template>
 
 <script>
-// Используемые плагины
-import DashboardGrid from '@/components/common/DashboardGrid.vue';
-
 export default {
   name: 'Table',
   components: {
-    DashboardGrid,
+    DashboardGrid: () => import('@/components/common/DashboardGrid.vue')
   },
   data: () => ({
     // URL загрузки списка пользователей
-    url: 'http://localhost:3004/users/',
+    url: 'http://localhost:3004/users/'
   })
 };
 </script>

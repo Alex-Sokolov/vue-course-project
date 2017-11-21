@@ -3,7 +3,7 @@
 <template>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <button type="button" @click="loadData" class="pull-right btn btn-xs btn-default btn-outline" title="Нажмите чтобы обновить таблицу">
+      <button type="button" class="pull-right btn btn-xs btn-default btn-outline" @click="loadData">
         <i :class="['fa fa-fw fa-refresh', loading ? 'fa-spin' : '']"></i>
         Обновить таблицу
       </button>
@@ -13,10 +13,12 @@
 
       <div class="form-group">
         <div class="col-md-2">
-          <rows-picker v-model.number="rowsPerPage"></rows-picker>
+          <rows-picker v-model.number="rowsPerPage" />
         </div>
         <div class="col-md-4">
-          <p class="form-control-static">Выбрано элементов на страницу {{ rowsPerPage }}</p>
+          <p class="form-control-static">
+            Выбрано элементов на страницу {{ rowsPerPage }}
+          </p>
         </div>
       </div>
 
@@ -33,7 +35,7 @@
 
       <div class="form-group">
         <strong>Выбрана страница {{ selectedPage }}</strong>
-        <rows-paginator v-model.number="selectedPage" :per-page="rowsPerPage" :total="totalRows"></rows-paginator>
+        <rows-paginator v-model.number="selectedPage" :per-page="rowsPerPage" :total="totalRows" />
       </div>
     </div>
   </div>
